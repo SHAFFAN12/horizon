@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizon OOH - Your Vision Zone</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for premium typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Letterhead Frame -->
+    <div class="letterhead-frame">
+        <div class="header-band">
+            <div class="logo-area">
+                <h1>HORIZON OOH</h1>
+                <p class="tagline">Your Vision Zone</p>
+            </div>
+            <div class="contact-mini">
+                <span>+1 234 567 8900</span> | <span>info@horizonooh.com</span>
+            </div>
+        </div>
+
+        <!-- Carousel Container -->
+        <main class="carousel-container">
+            <!-- Slide 1: Landing -->
+            <section id="landing" class="slide active">
+                <div class="content-wrapper">
+                    <h2 class="animate-fade-in">Welcome to Horizon OOH</h2>
+                    <p class="animate-slide-up">Elevating your brand visibility to new heights.</p>
+                </div>
+            </section>
+
+            <!-- Slide 2: About Us -->
+            <section id="about" class="slide">
+                <div class="content-wrapper">
+                    <h2>About Us</h2>
+                    <p>We are a premier outdoor advertising agency dedicated to bringing your vision to life. With
+                        strategic locations and innovative solutions, we ensure your message reaches the right audience
+                        at the right time.</p>
+                </div>
+            </section>
+
+            <!-- Slide 3: Project Structure (Tree) -->
+            <section id="projects" class="slide">
+                <div class="content-wrapper">
+                    <h2>Our Structure</h2>
+                    <div class="tree">
+                        <ul>
+                            <li>
+                                <span class="node root">Horizon OOH</span>
+                                <ul>
+                                    <li>
+                                        <span class="node">Digital Billboards</span>
+                                        <ul>
+                                            <li><span class="node leaf">City Center</span></li>
+                                            <li><span class="node leaf">Highways</span></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <span class="node">Transit Media</span>
+                                        <ul>
+                                            <li><span class="node leaf">Bus Stops</span></li>
+                                            <li><span class="node leaf">Trains</span></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <span class="node">Street Furniture</span>
+                                        <ul>
+                                            <li><span class="node leaf">Parks</span></li>
+                                            <li><span class="node leaf">Malls</span></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 4: Contact -->
+            <section id="contact" class="slide">
+                <div class="content-wrapper">
+                    <h2>Contact Us</h2>
+                    <form id="contact-form">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <textarea placeholder="Your Message" required></textarea>
+                        <button type="submit" class="btn-gold">Send Message</button>
+                    </form>
+                    <div class="contact-details">
+                        <p>123 Business Ave, Suite 456<br>New York, NY 10001</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <div class="footer-band">
+            <button id="prev-btn" class="nav-btn" disabled>Previous</button>
+            <div class="progress-indicators">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+                <span class="dot" data-slide="3"></span>
+            </div>
+            <button id="next-btn" class="nav-btn">Next</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

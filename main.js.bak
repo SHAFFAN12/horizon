@@ -1,0 +1,270 @@
+import * as THREE from 'three';
+import gsap from 'gsap';
+
+// --- Configuration ---
+const CONFIG = {
+    colors: {
+        navy: 0x0a1120,
+        gold: 0xc5a059,
+        white: 0xffffff
+    },
+    particles: 1500
+};
+
+// --- Scene Setup ---
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(CONFIG.colors.navy);
+scene.fog = new THREE.FogExp2(CONFIG.colors.navy, 0.02);
+
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.z = 5;
+
+const renderer = new THREE.WebGLRenderer({
+    canvas: document.querySelector('#webgl'),
+    antialias: true
+});
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+// --- Objects ---
+
+// 1. Particle Starfield (Backdrop)
+const geometry = new THREE.BufferGeometry();
+const count = CONFIG.particles;
+const positions = new Float32Array(count * 3);
+const colors = new Float32Array(count * 3);
+
+for (let i = 0; i < count * 3; i++) {
+    positions[i] = (Math.random() - 0.5) * 50; // Spread heavily
+    colors[i] = Math.random();
+}
+
+geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+const material = new THREE.PointsMaterial({
+    size: 0.05,
+    sizeAttenuation: true,
+    color: CONFIG.colors.gold,
+    transparent: true,
+    opacity: 0.8,
+    blending: THREE.AdditiveBlending
+});
+
+const particlesMesh = new THREE.Points(geometry, material);
+scene.add(particlesMesh);
+
+// 2. The Interactive "Horizontal Row" Network
+const networkGroup = new THREE.Group();
+scene.add(networkGroup);
+
+const nodesGeometry = new THREE.IcosahedronGeometry(0.8, 1);
+const nodesMaterial = new THREE.MeshStandardMaterial({
+    color: CONFIG.colors.gold,
+    map: goldTexture,
+    roughness: 0.2,
+    metalness: 0.8,
+    wireframe: false
+});
+
+// Create 5 horizontal nodes
+const siteNodes = [];
+const siteNames = ["City Center", "Highway West", "Airport Terminal", "Tech Park", "Coastal Road"];
+
+for (let i = 0; i < 5; i++) {
+    const mesh = new THREE.Mesh(nodesGeometry, nodesMaterial);
+
+    // Horizontal layout with slight spacing
+    const xPos = (i - 2) * 4; // -8, -4, 0, 4, 8
+    mesh.position.set(xPos, 0, 0);
+
+    // Add User Data for interaction
+    mesh.userData = {
+        id: i,
+        name: siteNames[i],
+        description: `Premium location at ${siteNames[i]}. High impact visibility.`
+    };
+
+    networkGroup.add(mesh);
+    siteNodes.push({ mesh, originalY: 0 });
+
+    // Add connector lines between nodes
+    if (i > 0) {
+        const lineGeo = new THREE.BufferGeometry().setFromPoints([
+            new THREE.Vector3(xPos - 4, 0, 0),
+            new THREE.Vector3(xPos, 0, 0)
+        ]);
+        const lineMat = new THREE.LineBasicMaterial({ color: CONFIG.colors.gold, transparent: true, opacity: 0.3 });
+        const line = new THREE.Line(lineGeo, lineMat);
+        networkGroup.add(line);
+    }
+}
+
+// Add light for the standard material
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+scene.add(ambientLight);
+const pointLight = new THREE.PointLight(CONFIG.colors.gold, 2, 50);
+pointLight.position.set(5, 5, 5);
+scene.add(pointLight);
+
+// Initial Position (will be animated in)
+networkGroup.position.y = -10; // Hide below initially
+
+// --- Mouse Interaction ---
+let mouseX = 0;
+let mouseY = 0;
+
+window.addEventListener('mousemove', (event) => {
+    mouseX = event.clientX / window.innerWidth - 0.5;
+    mouseY = event.clientY / window.innerHeight - 0.5;
+});
+
+// --- Interaction / Raycaster ---
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+
+window.addEventListener('click', (event) => {
+    // Only check clicks if we are in the "Network" section (Index 2)
+    if (currentSection !== 2) return;
+
+    // Calculate mouse position in normalized device coordinates
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+    raycaster.setFromCamera(mouse, camera);
+
+    const intersects = raycaster.intersectObjects(networkGroup.children);
+
+    if (intersects.length > 0) {
+        // Find the first mesh intersected
+        const object = intersects.find(hit => hit.object.type === 'Mesh')?.object;
+
+        if (object) {
+            openSiteModal(object.userData);
+        }
+    }
+});
+
+// Modal Logic
+const modal = document.getElementById('site-modal');
+const closeModal = document.querySelector('.close-modal');
+const modalTitle = document.getElementById('modal-title');
+const modalDesc = document.getElementById('modal-desc');
+
+function openSiteModal(data) {
+    if (!data) return;
+
+    modalTitle.innerText = data.name;
+    modalDesc.innerText = data.description;
+
+    modal.classList.add('active');
+
+    // Optional: Zoom camera subtly towards the node
+    gsap.to(camera.position, { z: 4, duration: 1 });
+}
+
+closeModal.addEventListener('click', () => {
+    modal.classList.remove('active');
+    gsap.to(camera.position, { z: 6, duration: 1 }); // Reset zoom
+});
+
+// Close interaction when clicking outside modal content
+modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        modal.classList.remove('active');
+        gsap.to(camera.position, { z: 6, duration: 1 });
+    }
+});
+
+// --- Scroll/Nav Interaction ---
+let currentSection = 0;
+const sections = document.querySelectorAll('.page-section');
+const navLinks = document.querySelectorAll('.nav-links a');
+const progressBar = document.querySelector('.progress-bar');
+const ctaBtn = document.getElementById('explore-btn');
+
+function navigateTo(index) {
+    if (index < 0 || index >= sections.length) return;
+
+    // Update UI
+    sections[currentSection].classList.remove('active');
+    sections[index].classList.add('active');
+    currentSection = index;
+
+    // Update Progress
+    progressBar.style.width = `${(index / (sections.length - 1)) * 100}%`;
+
+    // Trigger Camera/Scene Animation based on section
+    switch (index) {
+        case 0: // Home
+            gsap.to(camera.position, { z: 5, x: 0, y: 0, duration: 1.5 });
+            gsap.to(networkGroup.position, { y: -10, duration: 1.5 }); // Hide network down
+            break;
+        case 1: // About
+            gsap.to(camera.position, { z: 4, x: 2, duration: 1.5 });
+            gsap.to(networkGroup.position, { y: -10, duration: 1.5 });
+            break;
+        case 2: // Network
+            gsap.to(camera.position, { z: 8, x: 0, y: 0, duration: 1.5 }); // Pull back to see full row
+            gsap.to(networkGroup.position, { y: 0, x: 0, duration: 2, ease: "back.out(1.7)" }); // Pop up network
+            // Stop rotation, keep it stable horizontal
+            networkGroup.rotation.y = 0;
+            break;
+        case 3: // Contact
+            gsap.to(camera.position, { z: 5, y: -2, duration: 1.5 });
+            gsap.to(networkGroup.position, { y: -10, duration: 1.5 });
+            break;
+    }
+}
+
+navLinks.forEach((link, idx) => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        navigateTo(idx);
+    });
+});
+
+ctaBtn.addEventListener('click', () => {
+    navigateTo(1); // Go to About
+});
+
+// --- Animation Loop ---
+const clock = new THREE.Clock();
+
+function tick() {
+    const elapsedTime = clock.getElapsedTime();
+
+    // Rotate Particles
+    particlesMesh.rotation.y = elapsedTime * 0.05;
+    particlesMesh.rotation.x = mouseY * 0.1;
+
+    // Parallax
+    camera.position.x += (mouseX * 0.5 - camera.position.x) * 0.05;
+    camera.position.y += (-mouseY * 0.5 - camera.position.y) * 0.05;
+
+    // Skybox slight rotation
+    skyMesh.rotation.y = elapsedTime * 0.01;
+
+    // Animate Network Nodes (Gentle Float)
+    if (currentSection === 2) {
+        siteNodes.forEach((node, i) => {
+            // Sine wave float with offset
+            node.mesh.position.y = node.originalY + Math.sin(elapsedTime * 2 + i) * 0.2;
+            node.mesh.rotation.x += 0.01;
+            node.mesh.rotation.y += 0.01;
+        });
+    }
+
+    renderer.render(scene, camera);
+    window.requestAnimationFrame(tick);
+}
+
+tick();
+
+// --- Resize ---
+window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+});

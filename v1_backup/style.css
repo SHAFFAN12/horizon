@@ -1,0 +1,379 @@
+:root {
+    --navy-blue: #1a2a40;
+    --gold: #c5a059;
+    --gold-light: #e0be75;
+    --white: #ffffff;
+    --off-white: #f8f9fa;
+    --text-color: #333;
+    --transition-speed: 0.6s;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    background-color: #f0f0f0;
+    /* Backdrop for the "paper" */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: var(--text-color);
+}
+
+/* Letterhead Frame - The "Paper" */
+.letterhead-frame {
+    background: var(--white);
+    width: 90%;
+    max-width: 1200px;
+    /* Standard letter width approximation handled via max-width */
+    height: 90vh;
+    /* Fixed height for the "slide" feel */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Header Band */
+.header-band {
+    background: var(--navy-blue);
+    color: var(--gold);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 5px solid var(--gold);
+    flex-shrink: 0;
+}
+
+.logo-area h1 {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    color: var(--white);
+    /* White text for better contrast on navy */
+}
+
+.logo-area .tagline {
+    font-family: 'Mrs Saint Delafield', cursive;
+    /* Fallback will be handled */
+    /* Using Lato italic as a placeholder for a script font if not loaded, specific script font can be added */
+    font-style: italic;
+    color: var(--gold);
+    font-size: 1.2rem;
+    margin-top: 5px;
+}
+
+.contact-mini {
+    font-size: 0.9rem;
+    color: var(--off-white);
+}
+
+/* Carousel Container */
+.carousel-container {
+    flex-grow: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-speed) ease-in-out, transform var(--transition-speed) ease-in-out;
+    transform: translateX(100px);
+    /* Slide in effect */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px;
+    text-align: center;
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.slide.prev {
+    transform: translateX(-100px);
+    /* Exit to left */
+}
+
+/* Content Styling */
+h2 {
+    font-family: 'Cinzel', serif;
+    color: var(--navy-blue);
+    font-size: 3rem;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--gold);
+    margin: 10px auto 0;
+}
+
+p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #555;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Footer Band */
+.footer-band {
+    background: var(--navy-blue);
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 5px solid var(--gold);
+    flex-shrink: 0;
+}
+
+.nav-btn {
+    background: transparent;
+    border: 2px solid var(--gold);
+    color: var(--gold);
+    padding: 10px 20px;
+    font-family: 'Lato', sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover:not(:disabled) {
+    background: var(--gold);
+    color: var(--navy-blue);
+}
+
+.nav-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    border-color: #555;
+    color: #555;
+}
+
+.progress-indicators {
+    display: flex;
+    gap: 10px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dot.active {
+    background-color: var(--gold);
+}
+
+/* Tree Structure Styling */
+.tree ul {
+    padding-top: 20px;
+    position: relative;
+    transition: all 0.5s;
+    display: flex;
+    justify-content: center;
+}
+
+.tree li {
+    float: left;
+    text-align: center;
+    list-style-type: none;
+    position: relative;
+    padding: 20px 5px 0 5px;
+    transition: all 0.5s;
+}
+
+/* We will use ::before and ::after to draw the connectors */
+.tree li::before,
+.tree li::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 50%;
+    border-top: 2px solid var(--navy-blue);
+    width: 50%;
+    height: 20px;
+}
+
+.tree li::after {
+    right: auto;
+    left: 50%;
+    border-left: 2px solid var(--navy-blue);
+}
+
+/* We need to remove left-right connectors from elements without any siblings */
+.tree li:only-child::after,
+.tree li:only-child::before {
+    display: none;
+}
+
+/* Remove space from the top of single children */
+.tree li:only-child {
+    padding-top: 0;
+}
+
+/* Remove left connector from first child and right connector from last child */
+.tree li:first-child::before,
+.tree li:last-child::after {
+    border: 0 none;
+}
+
+/* Adding back the vertical connector to the last nodes */
+.tree li:last-child::before {
+    border-right: 2px solid var(--navy-blue);
+    border-radius: 0 5px 0 0;
+}
+
+.tree li:first-child::after {
+    border-radius: 5px 0 0 0;
+}
+
+/* Time to add downward connectors from parents */
+.tree ul ul::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    border-left: 2px solid var(--navy-blue);
+    width: 0;
+    height: 20px;
+}
+
+.tree .node {
+    border: 2px solid var(--navy-blue);
+    padding: 10px 20px;
+    text-decoration: none;
+    color: var(--navy-blue);
+    font-family: 'Lato', sans-serif;
+    font-size: 0.9rem;
+    font-weight: bold;
+    display: inline-block;
+    border-radius: 5px;
+    transition: all 0.5s;
+    background: var(--off-white);
+    position: relative;
+    z-index: 1;
+}
+
+.tree .node.root {
+    background: var(--navy-blue);
+    color: var(--gold);
+    border-color: var(--gold);
+    font-size: 1.1rem;
+    padding: 12px 25px;
+}
+
+.tree .node:hover,
+.tree .node:hover+ul li .node {
+    background: var(--gold-light);
+    color: var(--navy-blue);
+    border-color: var(--navy-blue);
+}
+
+.tree .node:hover+ul li::after,
+.tree .node:hover+ul li::before,
+.tree .node:hover+ul::before,
+.tree .node:hover+ul ul::before {
+    border-color: var(--gold);
+}
+
+/* Form Styling */
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+input,
+textarea {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--navy-blue);
+    box-shadow: 0 0 5px rgba(26, 42, 64, 0.2);
+}
+
+.btn-gold {
+    background: var(--navy-blue);
+    color: var(--gold);
+    border: none;
+    padding: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-gold:hover {
+    background: var(--gold);
+    color: var(--navy-blue);
+}
+
+/* Animations */
+.animate-fade-in {
+    animation: fadeIn 1s ease-out;
+}
+
+.animate-slide-up {
+    animation: slideUp 1s ease-out 0.5s both;
+    /* Delayed start */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
