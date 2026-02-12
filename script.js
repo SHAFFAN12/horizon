@@ -114,6 +114,20 @@
       $control.addEventListener("click", controlClickHandler);
     });
 
+    // Toggle auto-sliding when clicking anywhere on the slider
+    $slider.addEventListener("click", function (e) {
+      if (e.target.closest('.fnc-nav__control')) return; // Ignore clicks on nav controls
+
+      autoSlidingBlocked = !autoSlidingBlocked;
+      $slider.classList.toggle("m--autosliding-blocked");
+
+      if (autoSlidingBlocked) {
+        window.clearTimeout(autoSlidingTO);
+      } else {
+        setAutoslidingTO();
+      }
+    });
+
     function setAutoslidingTO() {
       window.clearTimeout(autoSlidingTO);
       var delay = +options.autoSlidingDelay || autoSlidingDelay;

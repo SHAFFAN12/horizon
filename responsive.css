@@ -1,0 +1,191 @@
+/* --- RESPONSIVE STYLES --- */
+@media (max-width: 768px) {
+
+    /* Global Adjustments */
+    .fnc-slide__heading-line {
+        font-size: 3rem;
+        padding-right: 0;
+    }
+
+    .fnc-slide__heading-line:nth-child(2) {
+        padding-left: 0;
+    }
+
+    .slide-text-content {
+        font-size: 1.1rem;
+        max-width: 90%;
+        margin-top: 15px;
+    }
+
+    .fnc-slide__action-btn {
+        margin-left: 0;
+        font-size: 1rem;
+        padding: 10px 25px;
+    }
+
+    /* Logo Scaling */
+    .slide-logo {
+        width: 150px;
+        top: 20px;
+        left: 20px;
+    }
+
+    /* Navigation Adjustments */
+    .fnc-nav {
+        width: 100%;
+        border-radius: 0;
+        bottom: 0;
+        left: 0;
+    }
+
+    .fnc-nav__controls {
+        justify-content: space-around;
+        padding: 5px;
+    }
+
+    .fnc-nav__control {
+        min-width: auto;
+        font-size: 10px !important;
+        padding: 5px;
+        letter-spacing: 0.5px;
+    }
+
+    /* Projects Slide Enhancements for Mobile */
+    .project-slide-content {
+        top: 5% !important;
+        padding-top: 60px;
+        /* Space for logo */
+    }
+
+    .project-slide-content .fnc-slide__heading {
+        margin-bottom: 20px;
+    }
+
+    .project-slide-content .fnc-slide__heading-line {
+        font-size: 2.5rem;
+        /* Smaller for mobile to fit */
+        letter-spacing: 2px;
+    }
+
+    /* Vertical Central Tree for Mobile */
+    .timeline-container {
+        height: auto;
+        width: 100%;
+        display: block;
+        margin-top: 10px;
+        padding-bottom: 60px;
+        overflow-y: auto;
+        max-height: 65vh;
+        position: relative;
+        perspective: 1000px;
+    }
+
+    .timeline-line {
+        left: 50%;
+        /* Center the line */
+        transform: translateX(-50%);
+        right: auto;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        height: 100%;
+        /* Full height of container content */
+        min-height: 400px;
+        background: linear-gradient(to bottom,
+                transparent 0%,
+                var(--color-gold) 10%,
+                var(--color-gold) 90%,
+                transparent 100%);
+        box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+    }
+
+    .timeline-items {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 20px 0;
+        position: relative;
+    }
+
+    .timeline-item {
+        width: 40%;
+        /* Reduced from 42% to prevent overflow */
+        margin: 10px 0 !important;
+        position: relative;
+        transform: none !important;
+    }
+
+    /* Odd Items - LEFT Side */
+    .timeline-item:nth-child(odd) {
+        align-self: flex-start;
+        margin-left: 2%;
+        text-align: right;
+    }
+
+    /* Even Items - RIGHT Side */
+    .timeline-item:nth-child(even) {
+        align-self: flex-end;
+        margin-right: 2%;
+        text-align: left;
+    }
+
+    /* Recalculated Connectors for 40% Width */
+    /* Center (50%) - (Width 40% + Margin 2%) = 8% Gap */
+    /* Making connector 10% to ensure overlap */
+
+    .timeline-item:nth-child(odd)::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: -10%;
+        width: 10%;
+        height: 2px;
+        background: var(--color-gold);
+        display: block !important;
+        transform: translateY(-50%);
+    }
+
+    .timeline-item:nth-child(even)::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: -10%;
+        width: 10%;
+        height: 2px;
+        background: var(--color-gold);
+        display: block !important;
+        transform: translateY(-50%);
+    }
+
+    .timeline-content {
+        flex-direction: column;
+        align-items: center;
+        padding: 8px;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(15px);
+    }
+
+    .timeline-content img {
+        width: 100%;
+        height: 60px;
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+
+    .timeline-content span {
+        font-size: 0.7rem;
+        line-height: 1.2;
+    }
+
+    /* Slide 1 Image & Text Position */
+    .example-slider .fnc-slide-1 .fnc-slide__content {
+        width: 90%;
+        top: 50%;
+    }
+
+    /* Slide 4 Contacts */
+    .fnc-slide__heading {
+        margin-bottom: 15px;
+    }
+}

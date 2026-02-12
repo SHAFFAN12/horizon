@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details - Horizon OOH</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --color-gold: #D4AF37;
+            --color-navy: #001f3f;
+            --color-white: #ffffff;
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            background-color: var(--color-navy);
+            color: var(--color-white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        h1 {
+            font-family: var(--font-heading);
+            color: var(--color-gold);
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .close-btn {
+            margin-top: 30px;
+            padding: 12px 30px;
+            background: var(--color-gold);
+            color: var(--color-navy);
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .close-btn:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Project Details</h1>
+        <p>This is a placeholder for the project details. In a real application, this page would dynamically load
+            content based on the project selected.</p>
+        <p>Horizon OOH delivers premium outdoor advertising solutions tailored to your brand's needs.</p>
+        <button class="close-btn" onclick="window.close()">Close Window</button>
+    </div>
+</body>
+
+</html>
