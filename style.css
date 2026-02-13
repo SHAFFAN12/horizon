@@ -1355,4 +1355,19 @@ body {
 .colorful-switch__checkbox:checked~.colorful-switch__label .colorful-switch__off:after {
   transition-timing-function: ease;
   transform: rotate(-45deg) scaleX(0) translateZ(0);
+}/* Footer Map Styling */
+.footer-map {
+    width: 100%;
+    margin-top: 25px;
+    border-radius: 12px;
+    opacity: 0.9;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.footer-map:hover {
+    transform: scale(1.02);
+    opacity: 1;
+    border-color: var(--color-gold);
 }
