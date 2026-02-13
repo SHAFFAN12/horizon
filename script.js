@@ -116,7 +116,7 @@
 
     // Toggle auto-sliding when clicking anywhere on the slider
     $slider.addEventListener("click", function (e) {
-      if (e.target.closest('.fnc-nav__control')) return; // Ignore clicks on nav controls
+      if (e.target.closest('.fnc-nav__control') || e.target.closest('input') || e.target.closest('textarea') || e.target.closest('button')) return; // Ignore clicks on nav controls & form elements
 
       autoSlidingBlocked = !autoSlidingBlocked;
       $slider.classList.toggle("m--autosliding-blocked");

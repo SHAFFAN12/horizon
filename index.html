@@ -10,6 +10,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@400;600&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="responsive.css">
 </head>
@@ -135,44 +136,50 @@
                             <div class="fnc-slide__mask-inner"></div>
                         </div>
 
-                        <!-- Wooden Billboard Scene -->
-                        <div class="billboard-scene">
-                            <!-- Legs -->
-                            <div class="billboard-leg leg-left"></div>
-                            <div class="billboard-leg leg-right"></div>
+                        <!-- New Billboard/City Scene -->
+                        <div class="contact-section-bg">
+                            <div class="glass-card-container">
+                                <h1 class="contact-title">Contact Us.</h1>
+                                <p class="contact-subtitle">Get in touch for your next OOH campaign</p>
 
-                            <!-- Main Board -->
-                            <div class="billboard-structure">
-                                <div class="billboard-frame">
-                                    <div class="billboard-board">
-                                        <!-- Top Lights -->
-                                        <div class="billboard-lights">
-                                            <div class="light light-1"></div>
-                                            <div class="light light-2"></div>
-                                            <div class="light light-3"></div>
+                                <div class="glass-card-content">
+                                    <!-- Left: Form -->
+                                    <form class="glass-form" action="https://formsubmit.co/oohhorizon@gmail.com"
+                                        method="POST">
+                                        <!-- FormSubmit Configuration -->
+                                        <input type="hidden" name="_subject"
+                                            value="New Inquiry from Horizon OOH Website">
+                                        <input type="hidden" name="_captcha" value="false">
+                                        <!-- Optional: Redirect to a thanks page or stay on page -->
+
+                                        <div class="form-row">
+                                            <input type="text" name="name" placeholder="Your Name" class="glass-input"
+                                                required>
+                                            <input type="email" name="email" placeholder="Your Email"
+                                                class="glass-input" required>
                                         </div>
+                                        <input type="tel" name="phone" placeholder="Phone Number" class="glass-input">
+                                        <input type="text" name="subject" placeholder="Subject (e.g., Mega Billboards)"
+                                            class="glass-input">
+                                        <textarea name="message" placeholder="Message" rows="3"
+                                            class="glass-input glass-textarea" required></textarea>
 
-                                        <!-- Content -->
-                                        <div class="billboard-content">
-                                            <h2 class="billboard-title">GET IN TOUCH</h2>
-                                            <p class="billboard-subtitle">Advertise with us today!</p>
+                                        <button type="submit" class="glass-submit-btn">Submit Inquiry</button>
+                                    </form>
 
-                                            <form class="contact-form">
-                                                <div class="form-group">
-                                                    <input type="text" placeholder="Your Name" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="email" placeholder="Your Email" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <textarea placeholder="Your Message" rows="3" required></textarea>
-                                                </div>
-                                                <button type="submit" class="submit-btn">SEND MESSAGE</button>
-                                            </form>
-
-                                            <div class="contact-info-small">
-                                                <span>info@horizonooh.com</span> | <span>+1 234 567 890</span>
-                                            </div>
+                                    <!-- Right: Info -->
+                                    <div class="glass-info">
+                                        <div class="info-item">
+                                            <span class="info-icon"><i class="fa-solid fa-phone"></i></span>
+                                            <span class="info-text">+92 3091329000</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-icon"><i class="fa-solid fa-envelope"></i></span>
+                                            <span class="info-text">oohhorizon@gmail.com</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-icon"><i class="fa-solid fa-location-dot"></i></span>
+                                            <span class="info-text">Office R-741 Block-03 Saadi Garden Malir Cantt, Karachi.</span>
                                         </div>
                                     </div>
                                 </div>
