@@ -549,10 +549,18 @@ body {
 /* Slide 1 Image */
 .example-slider .fnc-slide-1 .fnc-slide__inner,
 .example-slider .fnc-slide-1 .fnc-slide__mask-inner {
-  background-image: url("./assets/slide-2.png");
-  background-size: contain;
+  background-image: url("./assets/hero.png");
+  background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center top;
+  /* Fix top cut-off */
+}
+
+/* Override Blue Theme for Slide 1 (Sunset/Wood Theme) */
+.example-slider .fnc-slide-1 .fnc-slide__inner,
+.example-slider .fnc-slide-1 .fnc-slide__mask-inner {
+  background-color: #3e2723;
+  /* Dark Wood/Sunset Brown */
 }
 
 /* Specific positioning for Slide 1 content */
@@ -1355,19 +1363,116 @@ body {
 .colorful-switch__checkbox:checked~.colorful-switch__label .colorful-switch__off:after {
   transition-timing-function: ease;
   transform: rotate(-45deg) scaleX(0) translateZ(0);
-}/* Footer Map Styling */
+}
+
+/* Footer Map Styling */
 .footer-map {
-    width: 100%;
-    margin-top: 25px;
-    border-radius: 12px;
-    opacity: 0.9;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    transition: transform 0.3s ease;
+  width: 100%;
+  margin-top: 25px;
+  border-radius: 12px;
+  opacity: 0.9;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease;
 }
 
 .footer-map:hover {
-    transform: scale(1.02);
-    opacity: 1;
-    border-color: var(--color-gold);
+  transform: scale(1.02);
+  opacity: 1;
+  border-color: var(--color-gold);
+}
+
+/* --- HERO SLIDE BILLBOARD --- */
+.hero-slide-inner {
+  background-image: url('assets/slide-2.png');
+  /* Placeholder for sunset/field */
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-slide-inner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  /* Slight dim for text pop */
+  z-index: 0;
+}
+
+.hero-billboard-scene {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  perspective: 1000px;
+}
+
+.hero-billboard-structure {
+  position: relative;
+  width: 700px;
+  /* Wider for hero */
+  height: 350px;
+  transform-style: preserve-3d;
+  margin-bottom: 40px;
+}
+
+/* Legs (Posts) */
+.hero-leg {
+  position: absolute;
+  width: 50px;
+  /* Thicker posts */
+  height: 180%;
+  /* Go way down */
+  top: -10%;
+  background-image: url('assets/wood_texture.png');
+  background-size: cover;
+  box-shadow: 5px 0 15px rgba(0, 0, 0, 0.6);
+  border-right: 5px solid rgba(0, 0, 0, 0.3);
+  /* Depth */
+}
+
+.hero-leg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  /* Darken wood */
+}
+
+.hero-leg-left {
+  left: -60px;
+}
+
+.hero-leg-right {
+  right: -60px;
+}
+
+/* Refined Slide 1 Styles for Better Image Quality */
+.example-slider .fnc-slide-1 .fnc-slide__inner,
+.example-slider .fnc-slide-1 .fnc-slide__mask-inner {
+  background-image: url("./assets/hero.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  /* Improve rendering if scaled */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Ensure no other filters are messing with it */
+.example-slider .fnc-slide-1 .fnc-slide__mask-inner:before {
+  display: none;
+  /* Remove any overlays if present */
 }
