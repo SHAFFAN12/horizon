@@ -1,0 +1,10 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/shaffan/public_html/
+    - /bin/cp -r assets $DEPLOYPATH
+    - /bin/cp -r data $DEPLOYPATH
+    - /bin/cp index.html $DEPLOYPATH
+    - /bin/cp style.css $DEPLOYPATH
+    - /bin/cp script.js $DEPLOYPATH
+    - /bin/cp responsive.css $DEPLOYPATH
