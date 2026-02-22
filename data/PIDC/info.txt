@@ -1,0 +1,4 @@
+Location: PIDC
+Dimension: 61x30
+Direction: Bahria Complex Towards PC Hotel
+Panaflex Applicable Only
