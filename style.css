@@ -28,6 +28,7 @@ body {
   box-sizing: border-box;
   position: relative;
   height: 100vh;
+  height: 100dvh;
 }
 
 .fnc-slider *,
@@ -423,6 +424,7 @@ body {
   overflow: hidden;
   position: relative;
   height: 100vh;
+  height: 100dvh;
   perspective: 1500px;
   background: #000;
 }
@@ -550,19 +552,24 @@ body {
 /* Slide 1 Image */
 .example-slider .fnc-slide-1 .fnc-slide__inner,
 .example-slider .fnc-slide-1 .fnc-slide__mask-inner {
-  background-image: url("./assets/hero.png");
+  background-image: url("./assets/main.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
   /* Fixed image visibility */
 }
 
+/* Move mask closer to center on Slide 1 */
+.example-slider .fnc-slide-1 .fnc-slide__mask {
+  right: 55%;
+}
+
 /* Fix mask alignment for continuous image on Slide 1 */
 .example-slider .fnc-slide-1 .fnc-slide__mask-inner {
   margin-top: -48.5vh;
   /* Compensate for top: 15% + half height */
-  margin-left: calc(25.125vh - 40vw);
-  /* Compensate for right: 60% position */
+  margin-left: calc(25.125vh - 45vw);
+  /* Compensate for right: 55% position */
   background-position: center center;
   background-blend-mode: normal;
   /* Remove blending to match main background */
@@ -1474,7 +1481,7 @@ body {
 /* Refined Slide 1 Styles for Better Image Quality */
 .example-slider .fnc-slide-1 .fnc-slide__inner,
 .example-slider .fnc-slide-1 .fnc-slide__mask-inner {
-  background-image: url("./assets/hero.png");
+  background-image: url("./assets/main.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
