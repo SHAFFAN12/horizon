@@ -16,8 +16,18 @@
   --transition-fast: 0.3s;
 }
 
+html,
 body {
   margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  height: 100svh;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+body {
   font-family: var(--font-body);
   background-color: #000;
   /* Fallback */
@@ -27,8 +37,8 @@ body {
   overflow: hidden;
   box-sizing: border-box;
   position: relative;
-  height: 100vh;
-  height: 100dvh;
+  height: 100%;
+  height: 100svh;
 }
 
 .fnc-slider *,
@@ -423,8 +433,8 @@ body {
 .demo-cont {
   overflow: hidden;
   position: relative;
-  height: 100vh;
-  height: 100dvh;
+  height: 100%;
+  height: 100svh;
   perspective: 1500px;
   background: #000;
 }
