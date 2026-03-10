@@ -197,7 +197,7 @@ if ($portfolioBtn) {
 var projectsData = [
   {
     "location": "Johar Chowrangi (Mega & Dual Signboards)",
-    "display_type": "Panaflex",
+    // "display_type": "Panaflex",
     "dimensions": "71x35 & 60x35",
     "material": "Panaflex",
     "direction": "Johar Mor towards Johar Chowrangi",
@@ -209,7 +209,7 @@ var projectsData = [
   },
   {
     "location": "Johar Chowrangi",
-    "display_type": "Panaflex",
+    // "display_type": "Panaflex",
     "dimensions": "71x35",
     "material": "Panaflex",
     "direction": "Johar Chowrangi towards Munawar Chowrangi",
@@ -220,7 +220,7 @@ var projectsData = [
   },
   {
     "location": "Munawar Chowrangi Gulistan-e-Johar",
-    "display_type": "Panaflex",
+    // "display_type": "Panaflex",
     "dimensions": "65x30",
     "material": "Panaflex",
     "direction": "Kamran Chowrangi towards Johar Chowrangi",
@@ -234,7 +234,7 @@ var projectsData = [
   },
   {
     "location": "PIDC",
-    "display_type": "Panaflex",
+    // "display_type": "Panaflex",
     "dimensions": "61x30",
     "material": "Panaflex",
     "direction": "Bahria Complex towards PC Hotel",
@@ -244,7 +244,7 @@ var projectsData = [
   },
   {
     "location": "Rashid Minhas road at Millennium Mall",
-    "display_type": "Panaflex",
+    // "display_type": "Panaflex",
     "dimensions": "30x70",
     "material": "Panaflex",
     "direction": "Millennium towards Johar Mor",
@@ -259,7 +259,7 @@ var projectsData = [
   },
   {
     "location": "Shahra Faisal Nursery towards Airport",
-    "display_type": "Vinyl",
+    // "display_type": "Vinyl",
     "dimensions": "25x85",
     "material": "Vinyl",
     "direction": "Nursery towards Airport",
@@ -286,7 +286,7 @@ var projectsData = [
   },
   {
     "location": "Shahra Faisal Airport Towards Nursery",
-    "display_type": "Panaflex",
+    // "display_type": "Panaflex",
     "dimensions": "30x90",
     "material": "Panaflex",
     "direction": "Airport towards Nursery",
@@ -329,7 +329,7 @@ function updateModalContent() {
   document.getElementById('modalImage').src = images[currentImageIndex];
   document.getElementById('modalTitle').innerText = project.location.split('(')[0].trim();
   document.getElementById('modalLocation').innerText = project.location;
-  document.getElementById('modalFormat').innerText = project.display_type;
+  // document.getElementById('modalFormat').innerText = project.display_type;
   document.getElementById('modalDimensions').innerText = project.dimensions;
   document.getElementById('modalDirection').innerText = project.direction;
   document.getElementById('modalMaterial').innerText = project.material;
@@ -375,4 +375,5 @@ document.addEventListener('keydown', function (e) {
   if (e.key === 'n' || e.key === 'N') nextProject();
   if (e.key === 'p' || e.key === 'P') prevProject();
 });
+
 
