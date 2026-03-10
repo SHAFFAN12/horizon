@@ -1,4 +1,4 @@
-Location: Shahra Faisal Nursery Towards Airport
-Dimension: Nursery Towards Airport
+Location: Shahra Faisal Nursery towards Airport
+Dimension: Nursery towards Airport
 Direction: 25x85
 Vinyl Only
