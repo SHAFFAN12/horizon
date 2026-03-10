@@ -1,4 +1,4 @@
-Location: Shahra Faisal Airport Towards Nursery
+Location: Shahra Faisal Airport towards Nursery
 Dimension: 30x90
-Direction: Airport Towards Nursery
+Direction: Airport towards Nursery
 Panaflex Applicable Only
