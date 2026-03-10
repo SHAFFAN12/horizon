@@ -200,7 +200,7 @@ var projectsData = [
     "display_type": "Panaflex",
     "dimensions": "71x35 & 60x35",
     "material": "Panaflex",
-    "direction": "Johar Mor Towards Johar Chowrangi",
+    "direction": "Johar Mor towards Johar Chowrangi",
     "images": [
       "data/Johar Chowrangi (Mega & Dual Signboards)/1.jpeg",
       "data/Johar Chowrangi (Mega & Dual Signboards)/2.jpeg",
@@ -212,18 +212,18 @@ var projectsData = [
     "display_type": "Panaflex",
     "dimensions": "71x35",
     "material": "Panaflex",
-    "direction": "Johar Chowrangi Towards Munawar Chowrangi",
+    "direction": "Johar Chowrangi towards Munawar Chowrangi",
     "images": [
       "data/Johar Chowrangi Towards Munawar Chowrangi/1.jpeg",
       "data/Johar Chowrangi Towards Munawar Chowrangi/2.jpeg"
     ]
   },
   {
-    "location": "Munawar Chowrangi Gulistane Johar",
+    "location": "Munawar Chowrangi Gulistan-e-Johar",
     "display_type": "Panaflex",
     "dimensions": "65x30",
     "material": "Panaflex",
-    "direction": "Kamran Chowrangi Towards Johar Chowrangi",
+    "direction": "Kamran Chowrangi towards Johar Chowrangi",
     "images": [
       "data/Munawar Chowrangi/1.jpeg",
       "data/Munawar Chowrangi/2.jpeg",
@@ -237,17 +237,17 @@ var projectsData = [
     "display_type": "Panaflex",
     "dimensions": "61x30",
     "material": "Panaflex",
-    "direction": "Bahria Complex Towards PC Hotel",
+    "direction": "Bahria Complex towards PC Hotel",
     "images": [
       "data/PIDC/1.jpeg"
     ]
   },
   {
-    "location": "Rashid Minhas Road at Millennium Mall",
+    "location": "Rashid Minhas road at Millennium Mall",
     "display_type": "Panaflex",
     "dimensions": "30x70",
     "material": "Panaflex",
-    "direction": "Millennium Towards Johar Mor",
+    "direction": "Millennium towards Johar Mor",
     "images": [
       "data/Rashid Minhas Road at Millenium Mall/1.jpeg",
       "data/Rashid Minhas Road at Millenium Mall/2.jpeg",
@@ -258,11 +258,11 @@ var projectsData = [
     ]
   },
   {
-    "location": "Shahra Faisal Nursery Towards Airport",
+    "location": "Shahra Faisal Nursery towards Airport",
     "display_type": "Vinyl",
     "dimensions": "25x85",
     "material": "Vinyl",
-    "direction": "Nursery Towards Airport",
+    "direction": "Nursery towards Airport",
     "images": [
       "data/Shahra Faisal Nursery Towards Airport/1.jpeg",
       "data/Shahra Faisal Nursery Towards Airport/2.jpeg",
@@ -275,7 +275,7 @@ var projectsData = [
     "display_type": "Panaflex",
     "dimensions": "90x30 Roof Top & 120x20 Wall Panel",
     "material": "Panaflex",
-    "direction": "Metropole Towards Airport",
+    "direction": "Metropole towards Airport",
     "images": [
       "data/Shahre Faisal (Mega & Dual Signboards)/1.jpeg",
       "data/Shahre Faisal (Mega & Dual Signboards)/2.jpeg",
@@ -289,7 +289,7 @@ var projectsData = [
     "display_type": "Panaflex",
     "dimensions": "30x90",
     "material": "Panaflex",
-    "direction": "Airport Towards Nursery",
+    "direction": "Airport towards Nursery",
     "images": [
       "data/shahra e faisal airport towards nursery/1.jpeg",
       "data/shahra e faisal airport towards nursery/2.jpeg",
@@ -375,3 +375,4 @@ document.addEventListener('keydown', function (e) {
   if (e.key === 'n' || e.key === 'N') nextProject();
   if (e.key === 'p' || e.key === 'P') prevProject();
 });
+
