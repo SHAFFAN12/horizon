@@ -1,4 +1,4 @@
-Location: Munawar Chowrangi Gulistane Johar
+Location: Munawar Chowrangi Gulistan-e-Johar
 Dimension: 65x30
-Direction: Kamran Chowrangi Towards Johar Chowrangi
+Direction: Kamran Chowrangi towards Johar Chowrangi
 Panaflex Applicable Only
