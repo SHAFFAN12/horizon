@@ -1,4 +1,4 @@
 Location: Johar Chowrangi 
 Dimension: 71x35
-Direction: Johar Chowrangi Towards Munawar Chowrangi
+Direction: Johar Chowrangi towards Munawar Chowrangi
 Panaflex Applicable Only
