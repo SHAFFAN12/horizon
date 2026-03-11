@@ -117,6 +117,7 @@
     // Toggle auto-sliding when clicking anywhere on the slider
     $slider.addEventListener("click", function (e) {
       if (e.target.closest('.fnc-nav__control') || e.target.closest('input') || e.target.closest('textarea') || e.target.closest('button') || e.target.closest('.timeline-item')) return; // Ignore clicks on nav controls, form elements & project items
+
       autoSlidingBlocked = !autoSlidingBlocked;
       $slider.classList.toggle("m--autosliding-blocked");
 
@@ -290,7 +291,7 @@ var projectsData = [
     "material": "Panaflex",
     "direction": "Airport towards Nursery",
     "images": [
-      "data/shahra e faisal airport towards nursery/1.jpeg",
+      // "data/shahra e faisal airport towards nursery/1.jpeg",
       "data/shahra e faisal airport towards nursery/2.jpeg",
       "data/shahra e faisal airport towards nursery/3.jpeg",
       "data/shahra e faisal airport towards nursery/4.jpeg"
